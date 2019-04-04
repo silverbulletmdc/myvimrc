@@ -1,4 +1,4 @@
-let mapleader=","
+let mapleader="\ "
 inoremap jk <esc>
 
 " 取消方向键，强制使用vim的方向键
@@ -11,7 +11,15 @@ inoremap <right> <nop>
 " 将HL映射为回到行首，行末
 nnoremap H ^
 nnoremap L $
+nnoremap J 10j
+nnoremap K 10k
 nnoremap U <c-r>
+
+" 貌似不支持onoremap
+onoremap H ^
+onoremap L $
+onoremap J 10j
+onoremap K 10k
 
 " 在最后一行添加一个：
 nnoremap ,: A:<esc>
