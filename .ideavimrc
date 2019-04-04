@@ -1,0 +1,25 @@
+let mapleader=","
+inoremap jk <esc>
+
+" 取消方向键，强制使用vim的方向键
+inoremap <esc> <nop>
+inoremap <up> <nop> 
+inoremap <down> <nop> 
+inoremap <left> <nop> 
+inoremap <right> <nop> 
+
+" 将HL映射为回到行首，行末
+nnoremap H ^
+nnoremap L $
+nnoremap U <c-r>
+
+" 在最后一行添加一个：
+nnoremap ,: A:<esc>
+
+" 在insertmode中使用alt+方向键进行移动
+inoremap <A-h> <C-o>h
+inoremap <A-j> <C-o>j
+inoremap <A-k> <C-o>k
+inoremap <A-l> <C-o>l
+
+nnoremap <leader>v <c-v>
