@@ -1,4 +1,7 @@
-let mapleader="\ "
+" 核心思想： idea中，除了<c-o>分配给了vim之外，其他均保留其原有功能。
+" vim与idea冲突的按键使用leader替换掉ctrl
+
+let mapleader=","
 inoremap jk <esc>
 
 " 取消方向键，强制使用vim的方向键
@@ -25,9 +28,9 @@ onoremap K 10k
 nnoremap ,: A:<esc>
 
 " 在insertmode中使用alt+方向键进行移动
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
+inoremap <M-h> <C-o>h
+inoremap <M-j> <C-o>j
+inoremap <M-k> <C-o>k
+inoremap <M-l> <C-o>l
 
 nnoremap <leader>v <c-v>
