@@ -9,6 +9,7 @@ function! myspacevim#after() abort
     setglobal autoread
     au CursorHold * checktime  
     autocmd FileType markdown setlocal wrap 
+    autocmd FileType markdown setlocal nolinebreak 
     
     nnoremap H ^
     nnoremap L $
