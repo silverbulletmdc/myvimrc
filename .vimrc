@@ -19,17 +19,6 @@ noremap J 10j
 noremap K 10k
 nnoremap U <c-r>
 
-" 在最后一行添加一个：
-nnoremap ,: A:<esc>
-
-" 在insertmode中使用alt+方向键进行移动
-inoremap <M-h> <C-o>h
-inoremap <M-j> <C-o>j
-inoremap <M-k> <C-o>k
-inoremap <M-l> <C-o>l
-
-nnoremap <leader>v <c-v>
-
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -76,15 +65,15 @@ Plug 'plasticboy/vim-markdown'
 Plug 'Raimondi/delimitMate'
 Plug 'silverbulletmdc/vim-inkscape-insert'
 Plug 'vim-scripts/vim-auto-save'
-Plug 'Valloric/YouCompleteMe'
-Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
 
+Plug 'Valloric/YouCompleteMe'
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:auto_save = 1
+
+Plug 'ervandew/supertab'
 " File search
 Plug 'ctrlpvim/ctrlp.vim'
 map <leader>f :CtrlPMRU<CR>
@@ -102,18 +91,16 @@ let g:ctrlp_follow_symlinks=1
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+au BufRead,BufEnter,BufNewFile * IndentLinesReset
 Plug 'Yggdroot/indentLine'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_color_term = 239
 
 Plug 'altercation/vim-colors-solarized'
-
 " Initialize plugin system
 call plug#end()
 
 autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
-nmap <silent> <leader>s :source .vimrc<CR>
-nmap <silent> <leader>v :e .vimrc<CR>
+nmap <silent> <leader>s :source ~/.vimrc<CR>
+nmap <silent> <leader>v :e ~/.vimrc<CR>
 " there are some defaults for image directory and image name, you can change
 " them
 " " let g:mdip_imgdir = 'img'
@@ -144,12 +131,12 @@ if has("gui_running")
 	syntax enable
 	set background=light
 	colorscheme solarized
+else
+	let g:solarized_termcolors=256
+	set background=dark
+	colorscheme solarized
 endif "
 
-syntax enable
-set background=light
-let g:solarized_termcolors=256
-colorscheme solarized
 nmap <C-S> :update<CR>
 vmap <C-S> <C-C>:update<CR>
 imap <C-S> <C-O>:update<CR>
