@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="${HOME}/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="ys"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -62,7 +62,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode z history-substring-search extract)
+plugins=(git pip vi-mode z history-substring-search extract)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,7 +95,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # # added by Miniconda3 4.5.12 installer
-export PATH=~/miniconda3/bin/:${PATH}
+
+export PATH=${HOME}/bin:/usr/local/cuda/bin:${HOME}/mybin:${PATH}
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:${LD_LIBRARY_PATH}
+export OLD_PATH=${PATH}
+export ANACONDA_PATH=~/miniconda3/bin/:${PATH}
+export PATH=${ANACONDA_PATH}
 export EDITOR='vim'
+
 bindkey jk vi-cmd-mode
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

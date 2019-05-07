@@ -2,27 +2,20 @@
 " vim与idea冲突的按键使用leader替换掉ctrl
 
 let mapleader=","
-inoremap jk <esc>
-
+inoremap jk <Esc>
 " 取消方向键，强制使用vim的方向键
 inoremap <esc> <nop>
-inoremap <up> <nop> 
-inoremap <down> <nop> 
-inoremap <left> <nop> 
-inoremap <right> <nop> 
+noremap <up> <nop> 
+noremap <down> <nop> 
+noremap <left> <nop> 
+noremap <right> <nop> 
 
 " 将HL映射为回到行首，行末
-nnoremap H ^
-nnoremap L $
-nnoremap J 10j
-nnoremap K 10k
+noremap H ^
+noremap L $
+noremap J 10j
+noremap K 10k
 nnoremap U <c-r>
-
-" 貌似不支持onoremap
-onoremap H ^
-onoremap L $
-onoremap J 10j
-onoremap K 10k
 
 " 在最后一行添加一个：
 nnoremap ,: A:<esc>

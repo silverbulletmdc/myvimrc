@@ -1,163 +1,155 @@
-" Vundle配置---{{{
-set nocompatible              " 去除VI一致性,必须
-filetype off                  " 必须
-
-" 设置包括vundle和初始化相关的runtime path
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" 另一种选择, 指定一个vundle安装插件的路径
-"call vundle#begin('~/some/path/here')
-
-" 让vundle管理插件版本,必须
-Plugin 'VundleVim/Vundle.vim'
-
-" 以下范例用来支持不同格式的插件安装.
-" 请将安装插件的命令放在vundle#begin和vundle#end之间.
-" Github上的插件
-" 格式为 Plugin '用户名/插件仓库名'
-Plugin 'tpope/vim-fugitive'
-" 来自 http://vim-scripts.org/vim/scripts.html 的插件
-" Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
-Plugin 'L9'
-Plugin 'vim-auto-save'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'plytophogy/vim-virtualenv'
-Plugin 'cjrh/vim-conda'
-Plugin 'tpope/vim-obsession'
-Plugin 'jiangmiao/auto-pairs'
-
-" 你的所有插件需要在下面这行之前
-call vundle#end()            " 必须
-filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
-" 忽视插件改变缩进,可以使用以下替代:
-"filetype plugin on
-"
-" 简要帮助文档
-" :PluginList       - 列出所有已配置的插件
-" :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
-" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
-" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
-"
-" 查阅 :h vundle 获取更多细节和wiki以及FAQ
-" 将你自己对非插件片段放在这行之后
-"}}}
-
-" 基本设置{{{
-set number numberwidth=6
-let g:auto_save=1
-set nowrap
-set hlsearch incsearch
-set statusline=%f\ -\ FileType:\ %y\ %l/%L
-set laststatus=2
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set encoding=utf-8
-set cursorcolumn
-set cursorline
-highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-let g:SimplyFold_docstring_preview=1
-"}}}
-
-" 映射{{{
 let mapleader=","
-let maplocalleader="\\"
-nnoremap <leader>- ddp
-nnoremap <leader>_ ddkP
-nnoremap <space> za
-inoremap <c-y> <esc>ddi
-inoremap <c-d> <esc>yypi
-inoremap <c-u> <esc>viwUi
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr> 
-iabbrev @@ mengdechaolive@qq.com
-nnoremap <leader>" `<i"<esc>`>a"<esc>
-" 移动到行首
-nnoremap H ^
-onoremap H ^
-nnoremap L $
-onoremap L $
-onoremap p i(
-inoremap jk <esc>
+set relativenumber
+
+set mouse=a
+inoremap jk <Esc>
+" 解决jk引起的粘贴问题
+set t_BE=
+" 取消方向键，强制使用vim的方向键
 inoremap <esc> <nop>
-" 退出
-nnoremap <leader>q :wqa<cr>
-" 切换tab
-nnoremap <c-h> gT
-nnoremap <c-l> gt
-nnoremap <tab> <c-w>w
-" 抑制hightlight
-nnoremap <leader>h :noh<cr>
-" 保证光标在屏幕中心
-nnoremap j jzz
-nnoremap k kzz
-"}}}
+noremap <up> <nop> 
+noremap <down> <nop> 
+noremap <left> <nop> 
+noremap <right> <nop> 
 
-" 文件类型设置{{{
-augroup testgroup
-    autocmd!
-    autocmd FileType python nnoremap <buffer> <localleader>c I#<space><esc>
-    autocmd FileType python noremap <leader>b Oimport ipdb; ipdb.set_trace()<esc>
-augroup END
-"}}}
+" 将HL映射为回到行首，行末
+noremap H ^
+noremap L $
+noremap J 10j
+noremap K 10k
+nnoremap U <c-r>
 
-" Vimscript file settings ----------{{{
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-" }}}
+" 在最后一行添加一个：
+nnoremap ,: A:<esc>
 
-"-- ipdb -----{{{
-"}}}
+" 在insertmode中使用alt+方向键进行移动
+inoremap <M-h> <C-o>h
+inoremap <M-j> <C-o>j
+inoremap <M-k> <C-o>k
+inoremap <M-l> <C-o>l
 
-" NERDTree设置{{{
-let g:NERDTreeWinSize = 25 "设定 NERDTree 视窗大小
-"开启/关闭nerdtree快捷键
-map <C-f> :NERDTreeToggle<CR>
-let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
-"设置树的显示图标
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
-let g:NERDTreeShowLineNumbers=1  " 是否显示行号
-let g:NERDTreeHidden=0     "不显示隐藏文件
-"Making it prettier
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-" }}}
+nnoremap <leader>v <c-v>
 
-" Python设置{{{
-augroup filetype_python
-    autocmd!
-    autocmd FileType python setlocal foldmethod=indent
-    autocmd FileType python setlocal foldlevel=99
-augroup END
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
-au BufNewFile,BufRead *.py setlocal tabstop=4
-au BufNewFile,BufRead *.py setlocal softtabstop=4
-au BufNewFile,BufRead *.py setlocal shiftwidth=4
-au BufNewFile,BufRead *.py setlocal textwidth=79
-au BufNewFile,BufRead *.py setlocal expandtab
-au BufNewFile,BufRead *.py setlocal autoindent
-au BufNewFile,BufRead *.py setlocal fileformat=unix
-let python_highlight_all=1
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'silverbulletmdc/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-master branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+filetype plugin indent on
 syntax on
-" }}}
+Plug 'lervag/vimtex'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
-" YouCompleteMe设置{{{
-let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-" }}}
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsUsePythonVersion = 3
 
+Plug 'ferrine/md-img-paste.vim'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'Raimondi/delimitMate'
+Plug 'silverbulletmdc/vim-inkscape-insert'
+Plug 'vim-scripts/vim-auto-save'
+Plug 'Valloric/YouCompleteMe'
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:auto_save = 1
+" File search
+Plug 'ctrlpvim/ctrlp.vim'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
+Plug 'mhinz/vim-startify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_color_term = 239
+
+Plug 'altercation/vim-colors-solarized'
+
+" Initialize plugin system
+call plug#end()
+
+autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+nmap <silent> <leader>s :source .vimrc<CR>
+nmap <silent> <leader>v :e .vimrc<CR>
+" there are some defaults for image directory and image name, you can change
+" them
+" " let g:mdip_imgdir = 'img'
+" " let g:mdip_imgname = 'image'
+
+nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
+imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
+nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
+imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
+
+map <F3> :NERDTreeMirror<CR>
+map <F3> :NERDTreeToggle<CR>
+
+
+" vim markdown
+let g:vim_markdown_math = 1
+let g:vim_markdown_folding_disabled = 1
+
+
+if has("gui_running") 
+	"au GUIEnter * simalt ~x " 窗口启动时自动最大化 
+	""set guioptions-=m " 隐藏菜单栏 
+	set guioptions-=T " 隐藏工具栏 
+	"set guioptions-=L " 隐藏左侧滚动条 
+	""set guioptions-=r " 隐藏右侧滚动条 
+	"set guioptions-=b " 隐藏底部滚动条 
+	""set showtabline=0 " 隐藏Tab栏 
+	syntax enable
+	set background=light
+	colorscheme solarized
+endif "
+
+syntax enable
+set background=light
+let g:solarized_termcolors=256
+colorscheme solarized
+nmap <C-S> :update<CR>
+vmap <C-S> <C-C>:update<CR>
+imap <C-S> <C-O>:update<CR>
