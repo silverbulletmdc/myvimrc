@@ -1,29 +1,7 @@
-" 核心思想： idea中，除了<c-o>分配给了vim之外，其他均保留其原有功能。
-" vim与idea冲突的按键使用leader替换掉ctrl
+source .common_keybind.vim
+set surround
+set multiple-cursors
+nnoremap <leader>t :action AceAction<CR>
+nnoremap <leader>l :action AceLineAction<CR>
+nnoremap <leader>w :action AceTargetAction<CR>
 
-let mapleader=","
-inoremap jk <Esc>
-" 取消方向键，强制使用vim的方向键
-inoremap <esc> <nop>
-noremap <up> <nop> 
-noremap <down> <nop> 
-noremap <left> <nop> 
-noremap <right> <nop> 
-
-" 将HL映射为回到行首，行末
-noremap H ^
-noremap L $
-noremap J 10j
-noremap K 10k
-nnoremap U <c-r>
-
-" 在最后一行添加一个：
-nnoremap ,: A:<esc>
-
-" 在insertmode中使用alt+方向键进行移动
-inoremap <M-h> <C-o>h
-inoremap <M-j> <C-o>j
-inoremap <M-k> <C-o>k
-inoremap <M-l> <C-o>l
-
-nnoremap <leader>v <c-v>

@@ -1,24 +1,17 @@
-let mapleader=","
-set relativenumber
-
+" 基础设置
+set cursorcolumn
+set cursorline
+set colorcolumn=120
 set mouse=a
-inoremap jk <Esc>
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 12
+
 " 解决jk引起的粘贴问题
 set t_BE=
-" 取消方向键，强制使用vim的方向键
-inoremap <esc> <nop>
-noremap <up> <nop> 
-noremap <down> <nop> 
-noremap <left> <nop> 
-noremap <right> <nop> 
 
-" 将HL映射为回到行首，行末
-noremap H ^
-noremap L $
-noremap J 10j
-noremap K 10k
-nnoremap U <c-r>
+" 键盘映射
+source .common_keybind.vim
 
+" 插件管理器
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -28,7 +21,13 @@ call plug#begin('~/.vim/plugged')
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-
+Plug 'easymotion/vim-easymotion'
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -121,13 +120,13 @@ let g:vim_markdown_folding_disabled = 1
 
 
 if has("gui_running") 
-	"au GUIEnter * simalt ~x " 窗口启动时自动最大化 
-	""set guioptions-=m " 隐藏菜单栏 
+	" au GUIEnter * simalt ~x " 窗口启动时自动最大化 
+	set guioptions-=m " 隐藏菜单栏 
 	set guioptions-=T " 隐藏工具栏 
 	"set guioptions-=L " 隐藏左侧滚动条 
 	""set guioptions-=r " 隐藏右侧滚动条 
 	"set guioptions-=b " 隐藏底部滚动条 
-	""set showtabline=0 " 隐藏Tab栏 
+	"set showtabline=0 " 隐藏Tab栏 
 	syntax enable
 	set background=light
 	colorscheme solarized
@@ -137,6 +136,3 @@ else
 	colorscheme solarized
 endif "
 
-nmap <C-S> :update<CR>
-vmap <C-S> <C-C>:update<CR>
-imap <C-S> <C-O>:update<CR>
