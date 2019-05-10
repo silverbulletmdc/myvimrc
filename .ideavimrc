@@ -1,4 +1,4 @@
-source .common_keybind.vim
+source ~/.common_keybind.vim
 set surround
 set multiple-cursors
 nnoremap <leader>t :action AceAction<CR>

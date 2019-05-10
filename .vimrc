@@ -4,12 +4,15 @@ set cursorline
 set colorcolumn=120
 set mouse=a
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 12
+set number
+set autoread
+set nowrap
 
 " 解决jk引起的粘贴问题
 set t_BE=
 
 " 键盘映射
-source .common_keybind.vim
+source ~/.common_keybind.vim
 
 " 插件管理器
 " Specify a directory for plugins
@@ -94,6 +97,8 @@ au BufRead,BufEnter,BufNewFile * IndentLinesReset
 Plug 'Yggdroot/indentLine'
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'wsdjeg/vim-chat'
+Plug 'djoshea/vim-autoread'
 " Initialize plugin system
 call plug#end()
 
