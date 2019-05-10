@@ -3,7 +3,6 @@ set cursorcolumn
 set cursorline
 set colorcolumn=120
 set mouse=a
-set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 12
 set number
 set autoread
 set nowrap
@@ -31,6 +30,9 @@ map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
+nnoremap <leader>b :Startify<cr>
+nnoremap <leader>q :wq<cr>
+
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -74,7 +76,6 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:auto_save = 1
-
 Plug 'ervandew/supertab'
 " File search
 Plug 'ctrlpvim/ctrlp.vim'
@@ -114,7 +115,6 @@ nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
 imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
 nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
 imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
-
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
 
@@ -135,6 +135,7 @@ if has("gui_running")
 	syntax enable
 	set background=light
 	colorscheme solarized
+	set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 12
 else
 	let g:solarized_termcolors=256
 	set background=dark
