@@ -1,4 +1,7 @@
 " 基础设置
+set tabstop=4
+set shiftwidth=4
+set expandtab
 set cursorcolumn
 set cursorline
 set colorcolumn=120
@@ -6,6 +9,7 @@ set mouse=a
 set number
 set autoread
 set nowrap
+
 
 " 解决jk引起的粘贴问题
 set t_BE=
@@ -20,7 +24,6 @@ source ~/.common_keybind.vim
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
@@ -52,7 +55,7 @@ Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
+set conceallevel=0
 let g:tex_conceal='abdmg'
 
 Plug 'SirVer/ultisnips'
@@ -61,7 +64,7 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsUsePythonVersion = 3
 
-Plug 'ferrine/md-img-paste.vim'
+Plug 'silverbulletmdc/md-img-paste.vim'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'godlygeek/tabular'
@@ -69,7 +72,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'Raimondi/delimitMate'
 Plug 'silverbulletmdc/vim-inkscape-insert'
 Plug 'vim-scripts/vim-auto-save'
-
+Plug 'terryma/vim-multiple-cursors'
 Plug 'Valloric/YouCompleteMe'
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -99,7 +102,16 @@ Plug 'Yggdroot/indentLine'
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'wsdjeg/vim-chat'
+Plug 'w0rp/ale'
 Plug 'djoshea/vim-autoread'
+
+" rainbow_parentheses {{{1 "
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'ianva/vim-youdao-translater'
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
+" 1}}} "
 " Initialize plugin system
 call plug#end()
 
@@ -117,7 +129,7 @@ nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
 imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
-
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vim markdown
 let g:vim_markdown_math = 1
@@ -135,10 +147,37 @@ if has("gui_running")
 	syntax enable
 	set background=light
 	colorscheme solarized
-	set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 12
+	set guifont=Fira\ Code\ 12
 else
 	let g:solarized_termcolors=256
 	set background=dark
 	colorscheme solarized
 endif "
 
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+        exec "w"
+        if &filetype == 'c'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+        elseif &filetype == 'cpp'
+                exec "!g++ % -o %<"
+                exec "!time ./%<"
+        elseif &filetype == 'java'
+                exec "!javac %"
+                exec "!time java %<"
+        elseif &filetype == 'sh'
+                :!time bash %
+        elseif &filetype == 'python'
+                exec "!clear"
+                exec "!time python3 %"
+        elseif &filetype == 'html'
+                exec "!firefox % &"
+        elseif &filetype == 'go'
+                " exec "!go build %<"
+                exec "!time go run %"
+        elseif &filetype == 'mkd'
+                exec "!~/.vim/markdown.pl % > %.html &"
+                exec "!firefox %.html &"
+        endif
+endfunc

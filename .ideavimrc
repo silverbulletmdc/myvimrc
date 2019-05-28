@@ -1,7 +1,18 @@
 source ~/.common_keybind.vim
 set surround
 set multiple-cursors
-nnoremap <leader>t :action AceAction<CR>
-nnoremap <leader>l :action AceLineAction<CR>
-nnoremap <leader>w :action AceTargetAction<CR>
+
+" acejump 
+" Acejump {{{1 "
+nnoremap <space>t :action AceAction<CR>
+nnoremap <space>l :action AceLineAction<CR>
+nnoremap <space>w :action AceTargetAction<CR>
+" }}} "
+
+nnoremap <space>r :action ReformatCode<CR>
+nnoremap <space>p :action ActivatePythonConsoleToolWindow<CR>
+
+" 提交修改
+nnoremap <space>k :action CheckinProject<CR>
+
 

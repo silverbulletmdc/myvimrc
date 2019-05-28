@@ -6,6 +6,7 @@ noremap H ^
 noremap L $
 noremap J <c-d>
 noremap K <c-u>
+
 nnoremap U <c-r>
 
 nnoremap <leader>\| :vsplit<CR>
@@ -17,4 +18,5 @@ nnoremap <C-S> :update<CR>
 vnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
-nnoremap <leader>r :action ReformatCode<CR>
+" 使用leader代替被覆盖的功能
+nnoremap <leader>j J

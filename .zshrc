@@ -36,7 +36,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -62,7 +62,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip vi-mode z history-substring-search extract)
+plugins=(git pip z history-substring-search extract vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,4 +105,3 @@ export EDITOR='vim'
 
 bindkey jk vi-cmd-mode
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
