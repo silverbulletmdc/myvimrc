@@ -55,7 +55,6 @@ Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=0
 let g:tex_conceal='abdmg'
 
 Plug 'SirVer/ultisnips'
@@ -181,3 +180,5 @@ func! CompileRunGcc()
                 exec "!firefox %.html &"
         endif
 endfunc
+let g:vim_markdown_conceal=0
+au FileType markdown setl conceallevel=0
