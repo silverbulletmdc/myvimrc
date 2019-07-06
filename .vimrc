@@ -27,6 +27,7 @@ call plug#begin('~/.vim/plugged')
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
+
 nmap s <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t2)
 map  / <Plug>(easymotion-sn)
@@ -101,9 +102,14 @@ au BufRead,BufEnter,BufNewFile * IndentLinesReset
 Plug 'Yggdroot/indentLine'
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'sonph/onehalf'
 Plug 'wsdjeg/vim-chat'
 Plug 'w0rp/ale'
 Plug 'djoshea/vim-autoread'
+
+Plug 'Chiel92/vim-autoformat'
+nnoremap <leader>r :Autoformat<CR>
 
 " rainbow_parentheses {{{1 "
 Plug 'kien/rainbow_parentheses.vim'
@@ -147,11 +153,13 @@ if has("gui_running")
 	syntax enable
 	set background=light
 	colorscheme solarized
+
 	set guifont=Fira\ Code\ 12
 else
 	let g:solarized_termcolors=256
 	set background=dark
-	colorscheme solarized
+	" colorscheme solarized
+	colorscheme gruvbox
 endif "
 
 map <F5> :call CompileRunGcc()<CR>
