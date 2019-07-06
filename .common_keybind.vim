@@ -11,6 +11,7 @@ nnoremap U <c-r>
 
 nnoremap <leader>\| :vsplit<CR>
 nnoremap <leader>- :split<CR>
+nnoremap <leader>v "+p
 
 nnoremap <tab> <c-w>w
 

@@ -84,9 +84,9 @@ Plug 'ervandew/supertab'
 Plug 'ctrlpvim/ctrlp.vim'
 map <leader>f :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
-    \ }
+            \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+            \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+            \ }
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
@@ -141,52 +141,52 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_folding_disabled = 1
 
 
-if has("gui_running") 
-	" au GUIEnter * simalt ~x " 窗口启动时自动最大化 
-	set guioptions-=m " 隐藏菜单栏 
-	set guioptions-=T " 隐藏工具栏 
-	"set guioptions-=L " 隐藏左侧滚动条 
-	""set guioptions-=r " 隐藏右侧滚动条 
-	"set guioptions-=b " 隐藏底部滚动条 
-	"set showtabline=0 " 隐藏Tab栏 
-	syntax enable
-	set background=light
-	colorscheme solarized
+if has("gui_running")
+    " au GUIEnter * simalt ~x " 窗口启动时自动最大化
+    set guioptions-=m " 隐藏菜单栏
+    set guioptions-=T " 隐藏工具栏
+    "set guioptions-=L " 隐藏左侧滚动条
+    ""set guioptions-=r " 隐藏右侧滚动条
+    "set guioptions-=b " 隐藏底部滚动条
+    "set showtabline=0 " 隐藏Tab栏
+    syntax enable
+    set background=light
+    colorscheme solarized
 
-	set guifont=Fira\ Code\ 12
+    set guifont=Fira\ Code\ 12
 else
-	let g:solarized_termcolors=256
-	set background=dark
-	" colorscheme solarized
-	colorscheme gruvbox
+    let g:solarized_termcolors=256
+    set background=dark
+    " colorscheme solarized
+    colorscheme gruvbox
 endif "
 
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
-        exec "w"
-        if &filetype == 'c'
-                exec "!g++ % -o %<"
-                exec "!time ./%<"
-        elseif &filetype == 'cpp'
-                exec "!g++ % -o %<"
-                exec "!time ./%<"
-        elseif &filetype == 'java'
-                exec "!javac %"
-                exec "!time java %<"
-        elseif &filetype == 'sh'
-                :!time bash %
-        elseif &filetype == 'python'
-                exec "!clear"
-                exec "!time python3 %"
-        elseif &filetype == 'html'
-                exec "!firefox % &"
-        elseif &filetype == 'go'
-                " exec "!go build %<"
-                exec "!time go run %"
-        elseif &filetype == 'mkd'
-                exec "!~/.vim/markdown.pl % > %.html &"
-                exec "!firefox %.html &"
-        endif
+    exec "w"
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!time java %<"
+    elseif &filetype == 'sh'
+        :!time bash %
+    elseif &filetype == 'python'
+        exec "!clear"
+        exec "!time python3 %"
+    elseif &filetype == 'html'
+        exec "!firefox % &"
+    elseif &filetype == 'go'
+        " exec "!go build %<"
+        exec "!time go run %"
+    elseif &filetype == 'mkd'
+        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!firefox %.html &"
+    endif
 endfunc
 let g:vim_markdown_conceal=0
 au FileType markdown setl conceallevel=0

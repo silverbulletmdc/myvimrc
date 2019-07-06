@@ -2,6 +2,10 @@ source ~/.common_keybind.vim
 set surround
 set multiple-cursors
 
+" 对于vim中也有的同功能插件，统一使用leader
+nnoremap <leader>r :action ReformatCode<CR>
+
+" 对于vim中没有等价替代的插件，使用space
 " acejump 
 " Acejump {{{1 "
 nnoremap <space>t :action AceAction<CR>
@@ -9,7 +13,6 @@ nnoremap <space>l :action AceLineAction<CR>
 nnoremap <space>w :action AceTargetAction<CR>
 " }}} "
 
-nnoremap <space>r :action ReformatCode<CR>
 nnoremap <space>p :action ActivatePythonConsoleToolWindow<CR>
 
 " 提交修改
