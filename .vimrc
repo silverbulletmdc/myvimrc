@@ -151,7 +151,7 @@ if has("gui_running")
     "set showtabline=0 " 隐藏Tab栏
     syntax enable
     set background=light
-    colorscheme solarized
+    colorscheme gruvbox
 
     set guifont=Fira\ Code\ 12
 else
