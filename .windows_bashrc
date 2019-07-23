@@ -1,0 +1,13 @@
+source ~/.z.sh
+
+# vi mode
+set -o vi
+alias python='winpty python.exe'
+alias wsl='winpty wsl'
+alias gst='git status'
+alias ga='git add'
+alias gcmsg='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+
+
