@@ -1,0 +1,104 @@
+{
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "H",
+      ],
+      "after": [
+        "^",
+      ]
+    },
+    {
+      "before": [
+        "L",
+      ],
+      "after": [
+        "$",
+      ]
+    },
+    {
+      "before": [
+        "j",
+      ],
+      "after": [
+        "g",
+        "j",
+      ]
+    },
+    {
+      "before": [
+        "k",
+      ],
+      "after": [
+        "g",
+        "k",
+      ]
+    },
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "files.autoSave": "afterDelay",
+  "MarkdownPaste.path": "./img",
+  "git.autofetch": true,
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "texify",
+      "tools": [
+        "texify"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "texify",
+      "command": "texify",
+      "args": [
+        "--synctex",
+        "--pdf",
+        "--tex-option=\"-interaction=nonstopmode\"",
+        "--tex-option=\"-file-line-error\"",
+        "%DOC%.tex"
+      ],
+      "env": {}
+    }
+  ],
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "files.autoSaveDelay": 60000,
+  "window.zoomLevel": 0,
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    }
+  }
+}
